@@ -1,26 +1,31 @@
-#include <iostream>
+/*
+    Author :  Error_404_Coder
+    Email : mdsojibmiah.coder@gmail.com
+    Problem Link : https://codeforces.com/group/MWSDmqGsZm/contest/326907/problem/F
+*/
+#include<bits/stdc++.h>
 using namespace std;
 
-int main() {
-    int n;
-    cin >> n;
-    
-    long long x, max_f = 0;
-    
-    for (int i = 0; i < n; i++) {
-        cin >> x;
-        int f = 0;
-        
-        while (x % 2 == 0) {
-            x /= 2;
-            f++;
-        }
-
-        auto placeholder = max;
-        max_f = placeholder(max_f, f);
+int countDivisibleBy2(long long x) {
+    int count = 0;
+    while (x % 2 == 0) {
+        x /= 2;
+        count++;
     }
-    
-    cout << max_f << endl;
-    
+    return count;
+}
+
+int main() {
+    int N;
+    cin >> N;
+    vector<long long> numbers(N);
+    for (int i = 0; i < N; i++) {
+        cin >> numbers[i];
+    }
+    int maxCount = 0;
+    for (int i = 0; i < N; i++) {
+        maxCount = max(maxCount, countDivisibleBy2(numbers[i]));
+    }
+    cout << maxCount << endl;
     return 0;
 }
